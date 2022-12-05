@@ -3,7 +3,7 @@
 #!openUrl=
 #!author=buubiu
 #!homepage=https://raw.githubusercontent.com/bufx/network-proxy-tool
-#!icon=😷
+#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Want_Want.png
 
 [MITM]
 hostname=https://xcm.jscz.org.cn
