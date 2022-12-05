@@ -10,4 +10,4 @@ hostname=xcm.jscz.org.cn
 
 [Script]
 
-http-reponse https?:\/\/xn--ck8h\.com script-path=https://raw.githubusercontent.com/Peng-YM/Loon-Gallery/master/backend/gallery.js, requires-body=true, timeout=10, tag=cz-csm-clear-warning
+http-request https?:\/\/xn--ck8h\.com script-path=https://raw.githubusercontent.com/Peng-YM/Loon-Gallery/master/backend/gallery.js, requires-body=true, timeout=10, tag=cz-csm-clear-warning
