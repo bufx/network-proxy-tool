@@ -1,0 +1,13 @@
+#!name=cz-csm-clear-warning
+#!desc=cz-csm-clear-warning
+#!openUrl=
+#!author=buubiu
+#!homepage=https://raw.githubusercontent.com/bufx/network-proxy-tool
+#!icon=😷
+
+[MITM]
+hostname=https://xcm.jscz.org.cn
+
+[Script]
+
+http-reponse https://xcm.jscz.org.cn:7900/api-place-code/api/getTestResult script-path=https://raw.githubusercontent.com/bufx/network-proxy-tool/main/loon/script/cz-csm-clear-warning.js?token=GHSAT0AAAAAAB2R62VCT43Z6SMOU7J73YWUY4OA6MQ, requires-body=true, timeout=10, tag=cz-csm-clear-warning
