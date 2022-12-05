@@ -1,12 +1,12 @@
-#!name=cz-csm-clear-warning
-#!desc=cz-csm-clear-warning
-#!openUrl=
-#!author=buubiu
-#!homepage=https://raw.githubusercontent.com/bufx/network-proxy-tool
-#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Want_Want.png
+#!name=Loon Gallery
+#!desc=Loon 插件仓库
+#!openUrl=https://🎈.com
+#!author=Peng-YM
+#!homepage=https://github.com/Peng-YM/Loon-Gallery
+#!icon=https://avatars.githubusercontent.com/u/38467044?v=4
 
 [MITM]
-hostname=https://xcm.jscz.org.cn
+hostname=xn--ck8h.com
 
 [Script]
 
