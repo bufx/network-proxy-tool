@@ -3,6 +3,7 @@
 #!openUrl=
 #!author=buubiu
 #!homepage=https://raw.githubusercontent.com/bufx/network-proxy-tool
+#!icon=
 
 [MITM]
 hostname=xcm.jscz.org.cn
