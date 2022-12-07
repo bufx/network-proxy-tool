@@ -1,5 +1,5 @@
 #!name=cz-csm
-#!desc=desc
+#!url= https://raw.githubusercontent.com/bufx/network-proxy-tool/main/shadowrocket/modules/cz-csm.sgmodule
 
 [MITM]
 hostname=xcm.jscz.org.cn
