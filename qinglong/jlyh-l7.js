@@ -49,8 +49,9 @@
 
 let Notify = 0; 
 let defaultRunAll = false;  // 默认执行模式：false 表示默认只执行信息获取，true 表示默认执行所有功能
-let defaultEnableMqtt = true; // 默认MQTT模式：false 表示默认不启动MQTT监听，true 表示默认启动
-let showInfoLogs = false; // 控制是否在执行功能时显示信息获取相关的日志，默认如果执行功能则不显示
+let defaultEnableMqtt = false; // 默认MQTT模式：false 表示默认不启动MQTT监听，true 表示默认启动
+let showInfoLogs = true; // 控制是否在执行功能时显示信息获取相关的日志，默认如果执行功能则不显示
+let getVehicleInfo = false; //是否获取各种车辆信息-L7车有可能会报错，所以这边关掉
 const ckName = "jlyh";
 const $ = new Env("吉利银河");
 let msg = "";
@@ -439,7 +440,9 @@ class UserInfo {
             return;
         }
         // 获取各种车辆信息
-        await this.getVehicleInfo();
+       if (getVehicleInfo) {
+            await this.getVehicleInfo();
+       }
         // 根据配置决定是否初始化MQTT连接
         if (isMqttMode) {
             await this.initMqtt();
