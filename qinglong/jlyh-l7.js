@@ -1,31 +1,15 @@
 /**
- * @name 示例脚本
- * @cron 0 0 * * *
- * @description 这是一个示例脚本，每天 0 点执行。
- * @require axios
- * @env MY_CONFIG
+ * 任务名称
+ * name: script name
+ * 定时规则
+ * cron: 1 9 * * *
  */
-
-const axios = require('axios');
-
-// 从环境变量中获取配置
-const MY_CONFIG = process.env.MY_CONFIG || 'default_value';
-
-// 主函数
-async function main() {
-    console.log('脚本开始运行');
-    console.log(`配置值: ${MY_CONFIG}`);
-
-    try {
-        // 示例：发送一个 HTTP 请求
-        const response = await axios.get('https://api.example.com/data');
-        console.log('请求结果:', response.data);
-    } catch (error) {
-        console.error('请求失败:', error.message);
-    }
-
-    console.log('脚本运行结束');
-}
-
-// 执行主函数
-main();
+console.log('test scripts');
+QLAPI.notify('test scripts', 'test desc');
+QLAPI.getEnvs({ searchValue: 'dddd' }).then((x) => {
+  console.log('getEnvs', x);
+});
+QLAPI.systemNotify({ title: '123', content: '231' }).then((x) => {
+  console.log('systemNotify', x);
+});
+console.log('test desc');
