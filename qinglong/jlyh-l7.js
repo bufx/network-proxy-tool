@@ -59,7 +59,7 @@
 // *********************************************************
 // 各类变量的构造
 
-let Notify = 0; 
+let Notify = 1; 
 let defaultRunAll = false;  // 默认执行模式：false 表示默认只执行信息获取，true 表示默认执行所有功能
 let defaultEnableMqtt = false; // 默认MQTT模式：false 表示默认不启动MQTT监听，true 表示默认启动
 let showInfoLogs = true; // 控制是否在执行功能时显示信息获取相关的日志，默认如果执行功能则不显示
