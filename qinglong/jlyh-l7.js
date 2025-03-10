@@ -1,4 +1,5 @@
 /**
+ * new Env("吉利银河-L7签到");
  * cron: 08 15 * * *
  */
 /**
@@ -10,7 +11,16 @@
  * 使用方法：
  * 1. 在青龙面板中添加环境变量：
  *    - 变量名：jlyh
- *    - 变量值："抓域名https://galaxy-user-api.geely.com/api/v1/login/refresh?refreshToken=后面的值"&请求头headers中deviceSN的值
+ *    - 变量值:featureName&refreshToken&deviceId
+ *     - featureName: 将执行对应功能
+ *        如：
+ *      - all 将执行所有功能
+ *      - mqtt 将开启MQTT监听（这个要单独开）
+ *      - info 将只执行信息获取功能
+ *      - sign 将只执行签到功能
+ *      - opensentry 将执行打开哨兵功能
+ *      - sign opensentry 将执行签到和哨兵功能
+ *     - refreshTokenhe和deviceId变量值："抓域名https://galaxy-user-api.geely.com/api/v1/login/refresh?refreshToken=后面的值"&请求头headers中deviceSN的值
  *    - 抓不到这个域名抓短信登录包 https://galaxy-user-api.geely.com/api/v1/login/mobileCodeLogin 返回体中的refreshToken的值，同样后面带着&请求头headers中deviceSN的值
  *    - 注意我说的是值 并不是全部 填错的自己看着点
  *    - 并且变量是两个值 两个值 两个值 一个refreshToke的值一个header请求头中的deviceSN的值。变量值格式是：refreshToke的值&deviceSN的值
@@ -55,7 +65,7 @@ let defaultEnableMqtt = false; // 默认MQTT模式：false 表示默认不启动
 let showInfoLogs = true; // 控制是否在执行功能时显示信息获取相关的日志，默认如果执行功能则不显示
 let getVehicleInfo = false; //是否获取各种车辆信息-L7车有可能会报错，所以这边关掉
 const ckName = "jlyh";
-const $ = new Env("吉利银河-L7签到");
+const $ = new Env("吉利银河");
 let msg = "";
 
 // MQTT配置
@@ -74,9 +84,10 @@ class UserInfo {
     constructor(str) {
         this.ckStatus = true;
         this.token = '';
-        this.refreshToken = str.split('&')[0]; // 分隔符
+        this.featureName = str.split('&')[0];
+        this.refreshToken = str.split('&')[1]; // 分隔符
         this.articleId = '';
-        this.deviceSN = str.split('&')[1];
+        this.deviceSN = str.split('&')[2];
         this.switchStatus = {};  // 用于存储所有功能开关状态
         this.vehicleInfo = {};   // 用于存储车辆信息
         this.vehicleStatus = {}; // 用于存储车辆状态信息
@@ -419,6 +430,14 @@ class UserInfo {
      * -------主函数-------
      */
     async main(features = []) {
+        //从环境变量获取要执行的功能
+        if(this.featureNames.hasOwnProperty(this.featureName)) {
+          features = his.featureName;
+        } else {
+          $.DoubleLog(`❌请在环境变量指定需要执行的功能`);
+            Notify = 1;
+            return;
+        }
         $.DoubleLog(`⌛️ ${new Date().toLocaleString('en-GB', { timeZone: 'Asia/Shanghai', hour12: false }).replace(',', '').slice(0, 16).replace(/-/g, '/')}`);
         // 设置是否显示信息获取日志
         showInfoLogs = this.shouldShowInfoLogs(features);
