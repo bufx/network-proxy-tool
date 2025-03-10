@@ -1,9 +1,12 @@
 /**
+ * new Env("吉利银河-L7签到")
+ * cron 08 15 * * *  jlyh.js sign
+ * scriptVersionNow = "1.0.0";
+ * Show:
  * 吉利银河青龙脚本
  * 可实现查询信息、打开哨兵、签到、查询积分等功能
  * 支持MQTT服务，可接入HomeAssistant
  * 需要依赖：mqtt
- * 作者微信：greenteacher46 加微信说明来意，不接受免费咨询，可交流技术
 
  * 使用方法：
  * 1. 在青龙面板中添加环境变量：
@@ -53,7 +56,7 @@ let defaultEnableMqtt = false; // 默认MQTT模式：false 表示默认不启动
 let showInfoLogs = true; // 控制是否在执行功能时显示信息获取相关的日志，默认如果执行功能则不显示
 let getVehicleInfo = false; //是否获取各种车辆信息-L7车有可能会报错，所以这边关掉
 const ckName = "jlyh";
-const $ = new Env("吉利银河");
+const $ = new Env("吉利银河-L7签到");
 let msg = "";
 
 // MQTT配置
