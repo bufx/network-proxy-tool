@@ -761,6 +761,31 @@ class UserInfo {
         }
     }
 
+    // 连续签到天数查询
+    async continueDays() {
+        try {
+            let options = {
+                url: `https://galaxy-app.geely.com/app/v1/sign/getBaseData?isLoading=false`,
+                headers: this.getGetHeader(204453306, `/app/v1/sign/getBaseData?isLoading=false`),
+            };
+
+            // 执行连续签到天数查询请求
+            let result = await httpRequest(options);
+
+            if (result.code == 0) {
+                $.DoubleLog(`📅连续签到天数: ${result.data.continueDays}`);
+            } else {
+                $.DoubleLog(`❌查询连续签到天数失败！`);
+                console.log("⚠️失败原因:", result);
+                Notify = 1;
+                return false;
+            }
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+    }
+
     // *********************************************************
     // 功能完成类函数
 
@@ -772,6 +797,8 @@ class UserInfo {
             if (hasSignedToday) {
                 // 即使已经签到，也查询一下积分
                 await this.points();
+                // 查询连续签到天数
+                await this.continueDays();
                 return;
             }
 
@@ -795,6 +822,8 @@ class UserInfo {
                 $.DoubleLog(`✅签到成功！`);
                 // 签到成功后查询积分
                 await this.points();
+                // 查询连续签到天数
+                await this.continueDays();
                 Notify = 1;
             } else {
                 $.DoubleLog(`❌签到失败！`);
