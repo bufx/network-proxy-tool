@@ -84,7 +84,7 @@ class UserInfo {
     constructor(str) {
         this.ckStatus = true;
         this.token = '';
-        this.featureName = str.split('&')[0];
+        this.featureName = [str.split('&')[0]];
         this.refreshToken = str.split('&')[1]; // 分隔符
         this.articleId = '';
         this.deviceSN = str.split('&')[2];
