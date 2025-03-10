@@ -1,10 +1,10 @@
 /**
+ * new Env("吉利银河-L7签到")
  * 任务名称
  * name: script name
  * 定时规则
  * cron: 1 9 * * *
  */
-const $ = new Env("吉利银河");
 console.log('test scripts');
 QLAPI.notify('test scripts', 'test desc');
 QLAPI.getEnvs({ searchValue: 'dddd' }).then((x) => {
