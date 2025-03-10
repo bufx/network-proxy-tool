@@ -432,7 +432,7 @@ class UserInfo {
     async main(features = []) {
         //从环境变量获取要执行的功能
         if(this.featureNames.hasOwnProperty(this.featureName)) {
-          features = his.featureName;
+          features = this.featureName;
         } else {
           $.DoubleLog(`❌请在环境变量指定需要执行的功能`);
             Notify = 1;
