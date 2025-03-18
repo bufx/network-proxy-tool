@@ -71,7 +71,7 @@ script-providers:
     $.is_debug = ($.isNode() ? process.env['IS_DEDUG'] : $.getdata('is_debug')) || 'false';  // 调试模式
     $.token = ($.isNode() ? process.env['TUHU_TOKEN'] : $.getdata('tuhu_token')) || '';  // Token
     $.blackbox = ($.isNode() ? process.env['TUHU_BLACKBOX'] : $.getdata('tuhu_blackbox')) || 'kMPSQ1710898198mf9JVT5oKB5';  // blackbox
-    $.tokenArr = $.toObj($.token) || [];
+    $.tokenArr = $.token.split(',').filter(token => token.trim());
     $.appid = 'wx27d20205249c56a3';  // 小程序 appId
     $.messages = [];
     
