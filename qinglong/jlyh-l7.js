@@ -438,7 +438,7 @@ class UserInfo {
             Notify = 1;
             return;
         }
-        $.DoubleLog(`⌛️ ${new Date().toLocaleString('en-GB', { timeZone: 'Asia/Shanghai', hour12: false }).replace(/\//g, '-').replace(',', '')}`);
+        $.DoubleLog(`⌛️ ${new Date().toLocaleString('en-GB', { timeZone: 'Asia/Shanghai', hour12: false }).replace(',', '').replace(/-/g, '/').replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')}`);
         // 设置是否显示信息获取日志
         showInfoLogs = this.shouldShowInfoLogs(features);
         // 检查是否需要启动MQTT
