@@ -438,7 +438,7 @@ class UserInfo {
             Notify = 1;
             return;
         }
-        // $.DoubleLog(`⌛️ ${new Date().toLocaleString('en-GB', { timeZone: 'Asia/Shanghai', hour12: false }).replace(',', '').replace(/-/g, '/').replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')}`);
+        $.DoubleLog(`⌛️ ${new Date().toLocaleString('en-GB', { timeZone: 'Asia/Shanghai', hour12: false }).replace(',', '').replace(/-/g, '/').replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1')}`);
         // 设置是否显示信息获取日志
         showInfoLogs = this.shouldShowInfoLogs(features);
         // 检查是否需要启动MQTT
@@ -487,7 +487,7 @@ class UserInfo {
                 .map(f => this.featureNames[f.toLowerCase()] || f)
                 .filter(name => name);
             if (runningFeatures.length > 0) {
-                // $.DoubleLog(`🔄 正在运行${runningFeatures.join('、')}功能`);
+                $.DoubleLog(`🔄 正在运行${runningFeatures.join('、')}功能`);
             }
         }
     }
@@ -508,7 +508,7 @@ class UserInfo {
         if (features.length === 0) {
             return; // 如果是仅查询信息，直接返回
         }
-        // $.DoubleLog(`🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗`);
+        $.DoubleLog(`🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗`);
         if (features.includes('all')) {
             $.DoubleLog(`🔄 正在执行所有功能...`);
             await this.sign();
@@ -518,7 +518,7 @@ class UserInfo {
                 await this.sendVehicleStatusMqtt();
             }
         } else {
-            // $.DoubleLog(`🔄 正在执行功能...`);
+            $.DoubleLog(`🔄 正在执行功能...`);
             for (const feature of features) {
                 const methodName = feature.toLowerCase();
                 if (methodName && typeof this[methodName] === 'function') {
@@ -549,7 +549,7 @@ class UserInfo {
             // console.log(options);
             // console.log(result);
             if (result.code == 'success') {
-                // console.log(`✅${result.message}: ${result.data.centerTokenDto.token} \n🆗刷新KEY:${result.data.centerTokenDto.refreshToken}`);
+                console.log(`✅${result.message}: ${result.data.centerTokenDto.token} \n🆗刷新KEY:${result.data.centerTokenDto.refreshToken}`);
                 this.ckStatus = true;
                 this.token = result.data.centerTokenDto.token
             } else {
@@ -719,7 +719,7 @@ class UserInfo {
             // console.log(options);
             // console.log(result);
             if (result.code == 0) {
-                // $.DoubleLog(`✅剩余积分: ${result.data.availablePoints}`);
+                $.DoubleLog(`✅剩余积分: ${result.data.availablePoints}`);
             } else {
                 $.DoubleLog(`❌剩余积分查询: 失败`);
                 console.log(result);
@@ -744,7 +744,7 @@ class UserInfo {
 
             if (result.code == 0) {
                 if (result.data === true) {
-                    // $.DoubleLog(`✅今日已经签到啦！`);
+                    $.DoubleLog(`✅今日已经签到啦！`);
                     return true;
                 } else {
                     return false;
@@ -773,7 +773,7 @@ class UserInfo {
             let result = await httpRequest(options);
 
             if (result.code == 0) {
-                // $.DoubleLog(`📅连续签到天数: ${result.data.continueDays}`);
+                $.DoubleLog(`📅连续签到天数: ${result.data.continueDays}`);
             } else {
                 $.DoubleLog(`❌查询连续签到天数失败！`);
                 console.log("⚠️失败原因:", result);
@@ -819,7 +819,7 @@ class UserInfo {
             
             // 检查返回结果
             if (result.code == 0) {
-                // $.DoubleLog(`✅签到成功！`);
+                $.DoubleLog(`✅签到成功！`);
                 // 签到成功后查询积分
                 await this.points();
                 // 查询连续签到天数
