@@ -7,8 +7,8 @@ const notify = require('./sendNotify')
 
 class Ninebot {
     constructor(checkItem) {
-        this.signUrl = "https://cn-cbu-gateway.ninebot.com/portal/api/user-sign/v1/sign";
-        this.validUrl = "https://cn-cbu-gateway.ninebot.com/portal/api/user-sign/v1/status";
+        this.signUrl = "https://cn-cbu-gateway.ninebot.com/portal/api/user-sign/v2/sign";
+        this.validUrl = "https://cn-cbu-gateway.ninebot.com/portal/api/user-sign/v2/status";
         this.headers = {
             "Accept": "application/json, text/plain, */*",
             "Authorization": checkItem.authorization,
@@ -17,11 +17,11 @@ class Ninebot {
             "Connection": "keep-alive",
             "Content-Type": "application/json",
             "Host": "cn-cbu-gateway.ninebot.com",
-            "Origin": "https://api5-h5-app-bj.ninebot.com",
+            "Origin": "https://h5-bj.ninebot.com",
             "from_platform_1": "1",
             "language": "zh",
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Segway v6 C 606093338",
-            "Referer": "https://api5-h5-app-bj.ninebot.com/"
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Segway v6 C 610053754",
+            "Referer": "https://h5-bj.ninebot.com/"
         };
         this.checkItem = checkItem;
     }
